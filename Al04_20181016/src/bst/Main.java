@@ -50,7 +50,7 @@ public class Main {
 			bst.printTree(bst.getRoot(), 0);
 			System.out.println();
 			
-			System.out.println("============== 자식노드 한 개 있는 13 delete ===============");
+			System.out.println("============== 자식노드 한 개 있는 13 delete (seccessor)===============");
 			bst=new BST(list);
 			System.out.println(bst.delete("successor",13));
 			bst.printTree(bst.getRoot(), 0);
