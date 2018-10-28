@@ -15,19 +15,28 @@ public class Main {
 			System.out.println();
 			
 			System.out.println("============== median insert ===============");
-//			bst=new BST(list);
+			bst.deleteFile();
 			bst.resetRoot();
 			bst.menu("median");
 			bst.printTree(bst.getRoot(), 0);
 			bst.inorder();
-			
 			System.out.println();
 			
-			System.out.println("============== 자식노드 두 개 있는 32 search ===============");
+			
+			System.out.println("============== 자식노드 두 개 있는 38 search ===============");
 			bst=new BST(list);
-			System.out.println("iterativeSearch:"+bst.iterativeSearch(32));
-			System.out.println("recursiveSearch:"+bst.recursiveSearch(32));
+			long start = System.nanoTime();
+			System.out.println("iterativeSearch:"+bst.iterativeSearch(38));
+			long end = System.nanoTime();
+			System.out.println("걸린시간:" + (end-start));
 			System.out.println();
+			
+			start = System.nanoTime();
+			System.out.println("recursiveSearch:"+bst.recursiveSearch(38));
+			end = System.nanoTime();
+			System.out.println("걸린시간:" + (end-start));
+			System.out.println();
+			
 			System.out.println("============== 자식노드 두 개 있는 34 delete ===============");
 			bst=new BST(list);
 			System.out.println("[successor]");
@@ -35,6 +44,7 @@ public class Main {
 			bst.printTree(bst.getRoot(), 0);
 			System.out.println();
 			bst=new BST(list);
+			
 			System.out.println("[predecessor]");
 			System.out.println(bst.delete("predecessor",34));
 			bst.printTree(bst.getRoot(), 0);
@@ -44,6 +54,7 @@ public class Main {
 			bst=new BST(list);
 			System.out.println(bst.delete("successor",13));
 			bst.printTree(bst.getRoot(), 0);
+			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

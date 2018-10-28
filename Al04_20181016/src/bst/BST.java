@@ -1,9 +1,18 @@
 package bst;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class BST {
 	private int[] sortedArr;
 	private TreeNode root;
 	TreeNode current = root;
+	File file = new File("C:/Users/Administrator/Desktop/[Al]03/Result1.txt");
+    BufferedWriter bw = null;
+    PrintWriter pw = null;
 
 	public BST(Integer[] list) {
 		this.root = null;
@@ -220,7 +229,6 @@ public class BST {
 				} else {
 					parent.right = predecessor;
 				}
-
 				predecessor.right = current.right;
 			}
 		}
@@ -270,9 +278,19 @@ public class BST {
 	}
 
 	private void inorder(TreeNode r) {
-
 		if (r != null) {
 			inorder(r.getLeft());
+			try{
+				bw = new BufferedWriter(new FileWriter(file, true));
+				pw = new PrintWriter(bw, true);
+	            if(file.isFile() && file.canWrite()){
+	                //쓰기
+	            	pw.println(r.getData());
+	            }
+	            bw.close();
+	        }catch (IOException e) {
+	            System.out.println(e);
+	        }
 			System.out.print(r.getData() + " ");
 			inorder(r.getRight());
 		}
@@ -309,4 +327,10 @@ public class BST {
 		return right; // 최종 오른쪽 피봇 반환
 	}
 
-}
+	//파일 삭제
+	public void deleteFile() {
+		if( file.exists() ){
+            file.delete();
+        }
+	}
+}	
